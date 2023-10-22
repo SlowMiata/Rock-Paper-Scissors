@@ -1,7 +1,7 @@
 function getComputerChoice(){
 
     
-
+    //gets the choice of the robot at random
     let choice = ""
     switch(Math.floor(Math.random() * 3) + 1){
         case 1:
@@ -19,11 +19,10 @@ function getComputerChoice(){
 
 }
 
-
+//play a single round
 function PlayRound(PlayerChoice){
 
     let robot = getComputerChoice()
-
     switch(PlayerChoice){
         case "rock":
             if(robot == "rock"){
@@ -80,10 +79,10 @@ function PlayRound(PlayerChoice){
 }
 
 function game(){
-
+    //keep total score
     let score = 0
 
-
+//plays the game five time 
     for(let i = 0; i < 5; i++){
         let choice = prompt("rock, paper scissors shoot");
         score  += PlayRound(choice.toLowerCase())
