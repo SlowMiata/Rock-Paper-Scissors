@@ -84,10 +84,18 @@ function game(){
 
 //plays the game five time 
     for(let i = 0; i < 5; i++){
-        let choice = prompt("rock, paper scissors shoot");
-        score  += PlayRound(choice.toLowerCase())
     }
     console.log("total score is " + score)
 }
 
-game()
+const rock = document.querySelector('.rock').addEventListener('click', () =>{   
+    PlayRound('rock') 
+})
+const paper = document.querySelector('.paper').addEventListener('click', () =>{   
+    PlayRound('paper') 
+})
+const scissors = document.querySelector('.scissors').addEventListener('click', () =>{   
+    PlayRound('scissors') 
+})
+
+
