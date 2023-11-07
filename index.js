@@ -1,3 +1,8 @@
+const result = document.querySelector('.result')
+const robotResult = document.querySelector(".robot")
+const playerResult = document.querySelector(".player")
+const scoreDisplay = document.querySelector('.score')
+
 function getComputerChoice(){
     //gets the choice of the robot at random
     let choice = ""
@@ -17,15 +22,12 @@ function getComputerChoice(){
 
 }
 
-const result = document.querySelector('.result')
-const robotResult = document.querySelector(".robot")
-const playerResult = document.querySelector(".player")
+
 
 //play a single round
 function PlayRound(PlayerChoice){
 
     playerResult.textContent = PlayerChoice
-
 
     let robot = getComputerChoice()
     robotResult.textContent = robot
@@ -85,14 +87,38 @@ function PlayRound(PlayerChoice){
 }
 
 
-const rock = document.querySelector('.rock').addEventListener('click', () =>{   
-    PlayRound('rock') 
-})
-const paper = document.querySelector('.paper').addEventListener('click', () =>{   
-    PlayRound('paper') 
-})
-const scissors = document.querySelector('.scissors').addEventListener('click', () =>{   
-    PlayRound('scissors') 
-})
+function game(){
+
+    let score = 0
+    let gameCount = 0
+
+    const rock = document.querySelector('.rock').addEventListener('click', () =>{  
+        gameCount += 1 
+        score += PlayRound('rock') 
+        checkGameCountAndDisplayScore()
+    })
+    document.querySelector('.paper').addEventListener('click', () =>{   
+        gameCount += 1
+        score += PlayRound('paper') 
+        checkGameCountAndDisplayScore()
+    })
+    document.querySelector('.scissors').addEventListener('click', () =>{   
+        gameCount += 1
+        score += PlayRound('scissors') 
+        checkGameCountAndDisplayScore()
+    })
+
+    function checkGameCountAndDisplayScore() {
+        if (gameCount === 5) {
+            scoreDisplay.textContent = `Game over! Your score is ${score}`;
+            gameCount = 0
+        }
+    }
+
+}
+
+
+game()
+
 
 
