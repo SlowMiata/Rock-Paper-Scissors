@@ -1,6 +1,4 @@
 function getComputerChoice(){
-
-    
     //gets the choice of the robot at random
     let choice = ""
     switch(Math.floor(Math.random() * 3) + 1){
@@ -19,58 +17,66 @@ function getComputerChoice(){
 
 }
 
+const result = document.querySelector('.result')
+const robotResult = document.querySelector(".robot")
+const playerResult = document.querySelector(".player")
+
 //play a single round
 function PlayRound(PlayerChoice){
 
+    playerResult.textContent = PlayerChoice
+
+
     let robot = getComputerChoice()
+    robotResult.textContent = robot
     switch(PlayerChoice){
         case "rock":
             if(robot == "rock"){
-                console.log("tie")
+                result.textContent = "tie"
                 return 0
             }
             else if (robot == "paper"){
-                console.log("you lose :C")
+                result.textContent = "you lose :C"
                 return 0
             }
             else if (robot == "scissors"){
-                console.log("you win C:")
+                result.textContent = "you win C:"
                 return 1
             }
             break
         
         case "paper":
             if(robot == "paper"){
-                console.log("tie")
+                result.textContent = "tie"
                 return 0
             }
             else if (robot == "scissors"){
-                console.log("you lose :C")
+                result.textContent = "you lose :C"
                 return 0
             }
             else if (robot == "rock"){
-                console.log("you win C:")
+                result.textContent = "you win C:"
                 return 1
             }
             break
 
         case "scissors":
             if(robot == "scissors"){
-                console.log("tie")
+                result.textContent = "tie"
                 return 0
             }
             else if (robot == "rock"){
-                console.log("you lose :C")
+                result.textContent = "you lose :C"
                 return 0
             }
             else if (robot == "paper"){
-                console.log("you win C:")
+                result.textContent = "you win C:"
                 return 1
             }
             break
 
         default:
-            console.log("invalid choice")
+            result.textContent = "invalid choice"
             console.log(PlayerChoice)
             return 0
         
@@ -78,15 +84,6 @@ function PlayRound(PlayerChoice){
     
 }
 
-function game(){
-    //keep total score
-    let score = 0
-
-//plays the game five time 
-    for(let i = 0; i < 5; i++){
-    }
-    console.log("total score is " + score)
-}
 
 const rock = document.querySelector('.rock').addEventListener('click', () =>{   
     PlayRound('rock') 
