@@ -5,6 +5,11 @@ const scoreDisplay = document.querySelector('.score')
 const winner = document.querySelector('.winner')
 const currentScore = document.querySelector('.currentScore')
 const currentRound = document.querySelector('.round')
+const playAgain = document.querySelector('.playAgain')
+
+const rock = document.querySelector('.rock')
+const paper =  document.querySelector('.paper')
+const scissors =  document.querySelector('.scissors')
 
 function getComputerChoice(){
     //gets the choice of the robot at random
@@ -90,11 +95,12 @@ function PlayRound(PlayerChoice){
     
 
 function game(){
+    playAgain.style.visibility = 'hidden'
 
     let score = 0
     let gameCount = 1
 
-    document.querySelector('.rock').addEventListener('click', () =>{  
+    rock.addEventListener('click', () =>{  
         gameCount += 1 
         score += PlayRound('rock')
         currentScore.textContent =  `Score: ${score}`
@@ -102,7 +108,7 @@ function game(){
         checkGameCountAndDisplayScore()
         
     })
-    document.querySelector('.paper').addEventListener('click', () =>{   
+    paper.addEventListener('click', () =>{   
         gameCount += 1
         score += PlayRound('paper')
         currentScore.textContent  = `Score: ${score}`
@@ -110,7 +116,7 @@ function game(){
         checkGameCountAndDisplayScore()
         
     })
-    document.querySelector('.scissors').addEventListener('click', () =>{   
+    scissors.addEventListener('click', () =>{   
         gameCount += 1
         score += PlayRound('scissors') 
         currentScore.textContent = `Score: ${score}`
@@ -119,32 +125,46 @@ function game(){
         
     })
 
-
-
-
-
-    
-
     function checkGameCountAndDisplayScore() {
         if (gameCount === 6) {
+            rock.style.visibility = 'hidden'
+            paper.style.visibility = 'hidden'
+            scissors.style.visibility = 'hidden'
+            playAgain.style.visibility = 'visible'
             scoreDisplay.textContent = `Game over! Your score is ${score}`;
-                if (score <3 ){
+            currentRound.textContent = `Round: 5/5`
+            if (score <3 ){
 
-                    winner.textContent = "Robot Wins!"
-                }
-                else{
-                    winner.textContent = "Player Wins!"
-                }
+                winner.textContent = "Robot Wins!"
+            }
+            else{
+                winner.textContent = "Player Wins!"
+            }
+
+    
+            playAgain.addEventListener('click', () =>{
             gameCount = 1
             score = 0
             currentScore.textContent = 'Score: 0'
             currentRound.textContent = `Round: 1/5`
+            playAgain.style.visibility = 'hidden'
+            rock.style.visibility = 'visible'
+            paper.style.visibility = 'visible'
+            scissors.style.visibility = 'visible'
+
+        })
+
+            
+
+                
+        
+            
+            
             
         }
     }
 
 }
-
 
 game()
 

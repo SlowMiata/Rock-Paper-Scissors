@@ -8,15 +8,25 @@ body{
     text-align: center;
 }
 
-.rock, .paper, .scissors{
+.playAgain-div{
+    text-align: center;
+    margin-bottom: 200px;
+}
+
+.playAgain{
+    visibility: hidden;
+}
+
+
+.rock, .paper, .scissors, .playAgain{
     width: 200px;
     font-size: 30px;
     padding: 20px;
     border-radius: 20px;
     background-color: black;
-    border-color: white;
+    border-color: rgb(135, 131, 131);
     border-width: 5px;
-    color: rgb(139, 137, 137);
+    color: rgb(215, 210, 210);
     margin: 0 10px 0 10px;
     transition: all 0.2s ease-in-out;
 }
@@ -27,7 +37,7 @@ body{
 }
 
 .container{
-    height: 600px;
+    height: 500px;
     text-align: center;
 }
 
