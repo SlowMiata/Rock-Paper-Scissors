@@ -1,0 +1,33 @@
+
+body{
+    color: white;
+    background-color: black;
+}
+
+.button-container{
+    text-align: center;
+}
+
+.rock, .paper, .scissors{
+    width: 200px;
+    font-size: 30px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: black;
+    border-color: white;
+    border-width: 5px;
+    color: rgb(139, 137, 137);
+    margin: 0 10px 0 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.rock:hover, .paper:hover, .scissors:hover{
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(178, 170, 184, 0.4);
+}
+
+.container{
+    height: 600px;
+    text-align: center;
+}
+

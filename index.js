@@ -4,6 +4,7 @@ const playerResult = document.querySelector(".player")
 const scoreDisplay = document.querySelector('.score')
 const winner = document.querySelector('.winner')
 const currentScore = document.querySelector('.currentScore')
+const currentRound = document.querySelector('.round')
 
 function getComputerChoice(){
     //gets the choice of the robot at random
@@ -29,10 +30,10 @@ function PlayRound(PlayerChoice){
     scoreDisplay.textContent = ''
     winner.textContent = ''
 
-    playerResult.textContent = PlayerChoice
+    playerResult.textContent = `You picked: ${PlayerChoice}`
 
     let robot = getComputerChoice()
-    robotResult.textContent = robot
+    robotResult.textContent = `Robot picked: ${robot}`
     switch(PlayerChoice){
         case "rock":
             if(robot == "rock"){
@@ -91,31 +92,41 @@ function PlayRound(PlayerChoice){
 function game(){
 
     let score = 0
-    let gameCount = 0
+    let gameCount = 1
 
     document.querySelector('.rock').addEventListener('click', () =>{  
         gameCount += 1 
         score += PlayRound('rock')
-        currentScore.textContent = score
+        currentScore.textContent =  `Score: ${score}`
+        currentRound.textContent = `Round: ${gameCount}/5`
         checkGameCountAndDisplayScore()
+        
     })
     document.querySelector('.paper').addEventListener('click', () =>{   
         gameCount += 1
         score += PlayRound('paper')
-        currentScore.textContent = score
+        currentScore.textContent  = `Score: ${score}`
+        currentRound.textContent = `Round: ${gameCount}/5`
         checkGameCountAndDisplayScore()
+        
     })
     document.querySelector('.scissors').addEventListener('click', () =>{   
         gameCount += 1
         score += PlayRound('scissors') 
-        currentScore.textContent = score
+        currentScore.textContent = `Score: ${score}`
+        currentRound.textContent = `Round: ${gameCount}/5`
         checkGameCountAndDisplayScore()
+        
     })
+
+
+
+
 
     
 
     function checkGameCountAndDisplayScore() {
-        if (gameCount === 5) {
+        if (gameCount === 6) {
             scoreDisplay.textContent = `Game over! Your score is ${score}`;
                 if (score <3 ){
 
@@ -124,9 +135,10 @@ function game(){
                 else{
                     winner.textContent = "Player Wins!"
                 }
-            gameCount = 0
+            gameCount = 1
             score = 0
-            currentScore.textContent = score
+            currentScore.textContent = 'Score: 0'
+            currentRound.textContent = `Round: 1/5`
             
         }
     }
