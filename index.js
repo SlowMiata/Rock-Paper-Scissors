@@ -46,11 +46,11 @@ function PlayRound(PlayerChoice){
                 return 0
             }
             else if (robot == "paper"){
-                result.textContent = "you lose :C"
+                result.textContent = "Robot beats you"
                 return 0
             }
             else if (robot == "scissors"){
-                result.textContent = "you win C:"
+                result.textContent = "You beat robot"
                 return 1
             }
             break
@@ -61,11 +61,11 @@ function PlayRound(PlayerChoice){
                 return 0
             }
             else if (robot == "scissors"){
-                result.textContent = "you lose :C"
+                result.textContent = "Robot beats you"
                 return 0
             }
             else if (robot == "rock"){
-                result.textContent = "you win C:"
+                result.textContent = "You beat robot"
                 return 1
             }
             break
@@ -76,11 +76,11 @@ function PlayRound(PlayerChoice){
                 return 0
             }
             else if (robot == "rock"){
-                result.textContent = "you lose :C"
+                result.textContent = "Robot beats you"
                 return 0
             }
             else if (robot == "paper"){
-                result.textContent = "you win C:"
+                result.textContent = "You beat robot"
                 return 1
             }
             break
@@ -92,13 +92,14 @@ function PlayRound(PlayerChoice){
         
     }
 }
-    
+
+let score = 0
+let gameCount = 0
 
 function game(){
     playAgain.style.visibility = 'hidden'
 
-    let score = 0
-    let gameCount = 1
+    
 
     rock.addEventListener('click', () =>{  
         gameCount += 1 
@@ -126,45 +127,41 @@ function game(){
     })
 
     function checkGameCountAndDisplayScore() {
-        if (gameCount === 6) {
+        if (gameCount === 5) {
             rock.style.visibility = 'hidden'
             paper.style.visibility = 'hidden'
             scissors.style.visibility = 'hidden'
             playAgain.style.visibility = 'visible'
             scoreDisplay.textContent = `Game over! Your score is ${score}`;
-            currentRound.textContent = `Round: 5/5`
             if (score <3 ){
 
                 winner.textContent = "Robot Wins!"
             }
             else{
                 winner.textContent = "Player Wins!"
-            }
-
-    
-            playAgain.addEventListener('click', () =>{
-            gameCount = 1
-            score = 0
-            currentScore.textContent = 'Score: 0'
-            currentRound.textContent = `Round: 1/5`
-            playAgain.style.visibility = 'hidden'
-            rock.style.visibility = 'visible'
-            paper.style.visibility = 'visible'
-            scissors.style.visibility = 'visible'
-
-        })
-
-            
-
-                
-        
-            
-            
-            
+            }    
         }
     }
 
 }
+
+
+playAgain.addEventListener('click', () =>{
+        gameCount = 1
+        score = 0
+        currentScore.textContent = 'Score: 0'
+        currentRound.textContent = `Round: 1/5`
+        playAgain.style.visibility = 'hidden'
+        rock.style.visibility = 'visible'
+        paper.style.visibility = 'visible'
+        scissors.style.visibility = 'visible'
+        result.textContent = ""
+        winner.textContent = ''
+        scoreDisplay.textContent = ''
+        playerResult.textContent = 'You Picked:'
+        robotResult.textContent = 'Robot Picked: '
+        })
+
 
 game()
 
