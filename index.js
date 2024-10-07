@@ -11,6 +11,13 @@ const rock = document.querySelector('.rock')
 const paper =  document.querySelector('.paper')
 const scissors =  document.querySelector('.scissors')
 
+
+
+
+
+
+
+
 function getComputerChoice(){
     //gets the choice of the robot at random
     let choice = ""
